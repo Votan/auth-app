@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DeepPartial, Repository } from 'typeorm';
 import { User } from './user.entity';
 
 @Injectable()
@@ -9,6 +9,10 @@ export class UsersService {
     @InjectRepository(User)
     private usersRepository: Repository<User>,
   ) {}
+
+  create(entity: DeepPartial<User>) {
+    return this.usersRepository.save(entity);
+  }
 
   findAll(): Promise<User[]> {
     return this.usersRepository.find();
