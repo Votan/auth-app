@@ -22,6 +22,10 @@ export class UsersService {
     return this.usersRepository.findOne(id);
   }
 
+  update(id: string, entity: Partial<User>) {
+    return this.usersRepository.update(id, entity);
+  }
+
   async delete(id: string): Promise<void> {
     await this.usersRepository.delete(id);
   }
