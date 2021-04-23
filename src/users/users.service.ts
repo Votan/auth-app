@@ -22,7 +22,7 @@ export class UsersService {
     return this.usersRepository.findOne(id);
   }
 
-  async remove(id: string): Promise<void> {
+  async delete(id: string): Promise<void> {
     await this.usersRepository.delete(id);
   }
 }
