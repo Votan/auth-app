@@ -5,11 +5,11 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  firstName: string;
+  @Column({type:'text'})
+  userName: string;
 
-  @Column()
-  lastName: string;
+  @Column({type:'text'})
+  password: string;
 
   @Column({ default: true })
   isActive: boolean;
