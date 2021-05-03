@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Card } from 'src/cards/card.entity';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany } from 'typeorm';
 import { User } from '../users/user.entity'
 
 @Entity()
@@ -20,4 +21,7 @@ export class CardColumn {
 
   @ManyToOne(type => User, user => user.columns)
   user: User;
+
+  @OneToMany(type => Card, card => card.column)
+  cards: Card[];
 }
