@@ -1,32 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeepPartial, Repository } from 'typeorm';
-import { CardColumn } from './column.entity';
+import { Columns } from './columns.entity';
 
 @Injectable()
 export class ColumnsService {
   constructor(
-    @InjectRepository(CardColumn)
-    private cardsRepository: Repository<CardColumn>,
+    @InjectRepository(Columns)
+    private columnsRepository: Repository<Columns>,
   ) {}
 
-  create(entity: DeepPartial<CardColumn>) {
-    return this.cardsRepository.save(entity);
+  create(entity: DeepPartial<Columns>) {
+    return this.columnsRepository.save(entity);
   }
 
-  findAll(): Promise<CardColumn[]> {
-    return this.cardsRepository.find();
+  findAll(): Promise<Columns[]> {
+    return this.columnsRepository.find();
   }
 
-  findOne(id: string): Promise<CardColumn> {
-    return this.cardsRepository.findOne(id);
+  findOne(id: string): Promise<Columns> {
+    return this.columnsRepository.findOne(id);
   }
 
-  update(id: string, entity: Partial<CardColumn>) {
-    return this.cardsRepository.update(id, entity);
+  update(id: string, entity: Partial<Columns>) {
+    return this.columnsRepository.update(id, entity);
   }
 
   async delete(id: string): Promise<void> {
-    await this.cardsRepository.delete(id);
+    await this.columnsRepository.delete(id);
   }
 }

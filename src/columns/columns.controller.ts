@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nes
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ColumnsService } from './columns.service';
-import { CreateColumnDto, UpdateColumnDto } from './dto/columns.dto';
+import { CreateColumnDto, UpdateColumnDto } from './columns.dto';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)

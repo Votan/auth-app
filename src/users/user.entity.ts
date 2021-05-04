@@ -1,4 +1,4 @@
-import { CardColumn } from 'src/columns/column.entity';
+import { Columns } from 'src/columns/columns.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
@@ -24,6 +24,6 @@ export class User {
   })
   email: string;
 
-  @OneToMany(type => CardColumn, cardColumn => cardColumn.user)
-  columns: CardColumn[];
+  @OneToMany(type => Columns, columns => columns.user)
+  columns: Columns[];
 }

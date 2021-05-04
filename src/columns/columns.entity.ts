@@ -2,9 +2,15 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 import { User } from '../users/user.entity'
 
 @Entity()
-export class CardColumn {
-  @PrimaryGeneratedColumn()
+export class Columns {
+  @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Column({
+    type: 'varchar',
+    nullable: false,
+  })
+  authorId: string;
 
   @Column({
     type: 'varchar',
