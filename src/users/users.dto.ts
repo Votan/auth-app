@@ -32,5 +32,5 @@ export class UpdateUserDto {
   @ApiProperty()
   @IsString()
   @IsDefined()
-  email: string
+  email?: string
 }
