@@ -19,8 +19,8 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  findOne(id: string): Promise<User> {
-    return this.usersRepository.findOne(id);
+  findOne(email: string): Promise<User> {
+    return this.usersRepository.findOne({ email: email });
   }
 
   update(id: string, entity: Partial<User>) {
