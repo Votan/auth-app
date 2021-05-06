@@ -18,7 +18,7 @@ export class User {
   })
   username: string;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @Column({
     type: 'varchar',
     nullable: false,
