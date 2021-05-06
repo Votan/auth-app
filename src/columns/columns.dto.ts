@@ -5,17 +5,17 @@ export class CreateColumnDto {
   @ApiProperty()
   @IsString()
   @IsDefined()
-  title: string
+  title: string;
 
   @ApiProperty()
   @IsString()
   @IsDefined()
-  authorId: string
+  authorId: string;
 }
 
 export class UpdateColumnDto {
   @ApiProperty()
   @IsString()
   @IsDefined()
-  title?: string
+  title?: string;
 }
