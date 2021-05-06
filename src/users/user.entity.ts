@@ -1,11 +1,5 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm';
-import { Exclude } from 'class-transformer';
+import { Columns } from 'src/columns/columns.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class User {
@@ -18,7 +12,6 @@ export class User {
   })
   username: string;
 
-  @Exclude({ toPlainOnly: true })
   @Column({
     type: 'varchar',
     nullable: false,
@@ -31,9 +24,6 @@ export class User {
   })
   email: string;
 
-  @CreateDateColumn()
-  createDate: string;
-
-  @UpdateDateColumn()
-  updateDate: string;
+  @OneToMany((type) => Columns, (columns) => columns.user)
+  columns: Columns[];
 }
