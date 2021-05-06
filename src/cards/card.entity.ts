@@ -5,21 +5,13 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
-  OneToMany,
 } from 'typeorm';
-import { User } from '../users/user.entity';
-import { Card } from '../cards/card.entity';
+import { Columns } from '../columns/columns.entity';
 
 @Entity()
-export class Columns {
-  @PrimaryGeneratedColumn('uuid')
+export class Card {
+  @PrimaryGeneratedColumn()
   id: string;
-
-  @Column({
-    type: 'varchar',
-    nullable: false,
-  })
-  authorId: string;
 
   @Column({
     type: 'varchar',
@@ -27,15 +19,24 @@ export class Columns {
   })
   title: string;
 
+  @Column({
+    type: 'varchar',
+    nullable: false,
+  })
+  description: string;
+
+  @Column({
+    type: 'varchar',
+    nullable: false,
+  })
+  position: string;
+
   @CreateDateColumn()
   createDate: string;
 
   @UpdateDateColumn()
   updateDate: string;
 
-  @ManyToOne((type) => User, (user) => user.columns)
-  user: User;
-
-  @OneToMany(() => Card, (card) => card.columns)
-  cards: Card[];
+  @ManyToOne((type) => Columns, (columns) => columns.cards)
+  columns: Columns;
 }
