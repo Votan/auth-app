@@ -1,29 +1,30 @@
-import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { DeepPartial, Repository } from "typeorm";
-import { CreateCommentDto } from "./comments.dto";
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { DeepPartial, Repository } from 'typeorm';
+import { Comments } from './comment.entity';
+import { UpdateCommentDto } from './comments.dto';
 
 @Injectable()
 export class CommentsService {
   constructor(
-    @InjectRepository(Comment)
-    private commentsRepository: Repository<Comment>,
+    @InjectRepository(Comments)
+    private commentsRepository: Repository<Comments>,
   ) {}
 
-  async create(entity: Partial<Comment>) {
+  async create(entity: DeepPartial<Comments>) {
     return await this.commentsRepository.save(entity);
   }
 
-  findAll(): Promise<Comment[]> {
+  findAll(): Promise<Comments[]> {
     return this.commentsRepository.find();
   }
 
-  findOne(id: string): Promise<Comment> {
+  findOne(id: string): Promise<Comments> {
     return this.commentsRepository.findOne(id);
   }
 
-  update(id: string, entity: Partial<Comment>) {
-    return this.commentsRepository.update(id, entity);
+  update(id: string, updateCommentDto: UpdateCommentDto) {
+    return this.commentsRepository.update(id, updateCommentDto);
   }
 
   async delete(id: string): Promise<void> {

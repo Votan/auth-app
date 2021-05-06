@@ -1,18 +1,23 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
-export class Comment {
+export class Comments {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({
     type: 'text',
-    nullable: false,
   })
   name: string;
 
   @Column({
-    type: 'varchar',
+    type: 'text',
   })
   body: string;
 
