@@ -12,7 +12,10 @@ export class UsersService {
   ) {}
 
   async create(entity: DeepPartial<User>) {
-    return this.usersRepository.save({...entity, password: await bcrypt.hash(entity.password, 10)});
+    return this.usersRepository.save({
+      ...entity,
+      password: await bcrypt.hash(entity.password, 10),
+    });
   }
 
   findAll(): Promise<User[]> {
