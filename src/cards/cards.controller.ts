@@ -12,6 +12,8 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { CreateCardDto, UpdateCardDto } from './cards.dto';
 import { CardsService } from './cards.service';
+import { CurrentUser } from '../guards/current-user.decorator';
+import { User } from '../users/user.entity';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
@@ -21,8 +23,8 @@ export class CardsController {
   constructor(private readonly cardsService: CardsService) {}
 
   @Post()
-  create(@Body() createUserDto: CreateCardDto) {
-    return this.cardsService.create(createUserDto);
+  create(@Body() createUserDto: CreateCardDto, @CurrentUser() user: User) {
+    return this.cardsService.create(createUserDto, user);
   }
 
   @Get()

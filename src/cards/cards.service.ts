@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeepPartial, Repository } from 'typeorm';
 import { Card } from './card.entity';
+import { User } from '../users/user.entity';
 
 @Injectable()
 export class CardsService {
@@ -10,8 +11,8 @@ export class CardsService {
     private cardsRepository: Repository<Card>,
   ) {}
 
-  create(entity: DeepPartial<Card>) {
-    return this.cardsRepository.save(entity);
+  create(entity: DeepPartial<Card>, user: User) {
+    return this.cardsRepository.save({ ...entity, authorId: user.id });
   }
 
   findAll(): Promise<Card[]> {

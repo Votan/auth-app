@@ -12,7 +12,7 @@ import { Comments } from '../comments/comment.entity';
 
 @Entity()
 export class Card {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({
@@ -39,7 +39,7 @@ export class Card {
   @UpdateDateColumn()
   updateDate: string;
 
-  @ManyToOne((type) => Columns, (columns) => columns.cards)
+  @ManyToOne(() => Columns, (columns) => columns.cards)
   columns: Columns;
 
   @OneToMany(() => Comments, (comments) => comments.card)
