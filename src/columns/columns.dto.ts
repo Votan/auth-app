@@ -6,11 +6,6 @@ export class CreateColumnDto {
   @IsString()
   @IsDefined()
   title: string;
-
-  @ApiProperty()
-  @IsString()
-  @IsDefined()
-  authorId: string;
 }
 
 export class UpdateColumnDto {
