@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DeepPartial, Repository } from 'typeorm';
 import { Comments } from './comment.entity';
 import { UpdateCommentDto } from './comments.dto';
+import { User } from '../users/user.entity';
 
 @Injectable()
 export class CommentsService {
@@ -11,8 +12,8 @@ export class CommentsService {
     private commentsRepository: Repository<Comments>,
   ) {}
 
-  async create(entity: DeepPartial<Comments>) {
-    return await this.commentsRepository.save(entity);
+  async create(entity: DeepPartial<Comments>, user: User) {
+    return await this.commentsRepository.save({ ...entity, authorId: user.id });
   }
 
   findAll(): Promise<Comments[]> {

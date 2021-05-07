@@ -20,6 +20,7 @@ export class Comments {
 
   @Column({
     type: 'text',
+    nullable: true,
   })
   body: string;
 
@@ -30,5 +31,5 @@ export class Comments {
   updateDate: string;
 
   @ManyToOne(() => Card, (card) => card.comments)
-  card: Card;
+  public card: Card;
 }
