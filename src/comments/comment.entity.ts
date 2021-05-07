@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Card } from '../cards/card.entity';
 
 @Entity()
 export class Comments {
@@ -19,11 +21,6 @@ export class Comments {
   @Column({
     type: 'text',
   })
-  name: string;
-
-  @Column({
-    type: 'text',
-  })
   body: string;
 
   @CreateDateColumn()
@@ -31,4 +28,7 @@ export class Comments {
 
   @UpdateDateColumn()
   updateDate: string;
+
+  @ManyToOne(() => Card, (card) => card.comments)
+  card: Card;
 }

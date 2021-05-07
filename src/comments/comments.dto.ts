@@ -4,18 +4,16 @@ import { IsDefined, IsString } from 'class-validator';
 export class CreateCommentDto {
   @ApiProperty()
   @IsString()
-  name: string;
+  @IsDefined()
+  body: string;
 
   @ApiProperty()
   @IsString()
-  body: string;
+  @IsDefined()
+  authorId: string;
 }
 
 export class UpdateCommentDto {
-  @ApiProperty()
-  @IsString()
-  name?: string;
-
   @ApiProperty()
   @IsString()
   body?: string;

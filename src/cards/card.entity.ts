@@ -5,8 +5,10 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 import { Columns } from '../columns/columns.entity';
+import { Comments } from '../comments/comment.entity';
 
 @Entity()
 export class Card {
@@ -39,4 +41,7 @@ export class Card {
 
   @ManyToOne((type) => Columns, (columns) => columns.cards)
   columns: Columns;
+
+  @OneToMany(() => Comments, (comments) => comments.card)
+  comments: Comments[];
 }
