@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeepPartial, Repository } from 'typeorm';
 import { Columns } from './columns.entity';
+import { User } from '../users/user.entity';
 
 @Injectable()
 export class ColumnsService {
@@ -10,8 +11,8 @@ export class ColumnsService {
     private columnsRepository: Repository<Columns>,
   ) {}
 
-  create(entity: DeepPartial<Columns>) {
-    return this.columnsRepository.save(entity);
+  create(entity: DeepPartial<Columns>, user: User) {
+    return this.columnsRepository.save({ ...entity, authorId: user.id });
   }
 
   findAll(): Promise<Columns[]> {
