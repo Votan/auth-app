@@ -14,6 +14,7 @@ import { CreateCardDto, UpdateCardDto } from './cards.dto';
 import { CardsService } from './cards.service';
 import { CurrentUser } from '../guards/current-user.decorator';
 import { User } from '../users/user.entity';
+import { CardsOwnerGuard } from '../guards/cards-owner.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
@@ -33,16 +34,19 @@ export class CardsController {
   }
 
   @Get(':id')
+  @UseGuards(CardsOwnerGuard)
   findOne(@Param('id') id: string) {
     return this.cardsService.findOne(id);
   }
 
   @Put(':id')
+  @UseGuards(CardsOwnerGuard)
   update(@Param('id') id: string, @Body() updateCardDto: UpdateCardDto) {
     return this.cardsService.update(id, updateCardDto);
   }
 
   @Delete(':id')
+  @UseGuards(CardsOwnerGuard)
   delete(@Param('id') id: string) {
     return this.cardsService.delete(id);
   }
