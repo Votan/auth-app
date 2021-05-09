@@ -14,7 +14,7 @@ import { ColumnsService } from './columns.service';
 import { CreateColumnDto, UpdateColumnDto } from './columns.dto';
 import { CurrentUser } from '../guards/current-user.decorator';
 import { User } from '../users/user.entity';
-import { ColumnsOwnerGuard } from '../guards/columns-owner.service';
+import { ColumnsOwnerGuard } from '../guards/columns-owner.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
