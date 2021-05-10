@@ -19,6 +19,12 @@ export class Card {
     type: 'varchar',
     nullable: false,
   })
+  authorId: string;
+
+  @Column({
+    type: 'varchar',
+    nullable: false,
+  })
   title: string;
 
   @Column({
