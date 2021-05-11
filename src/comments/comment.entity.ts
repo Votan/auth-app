@@ -30,6 +30,6 @@ export class Comments {
   @UpdateDateColumn()
   updateDate: string;
 
-  @ManyToOne(() => Card, (card) => card.comments)
+  @ManyToOne(() => Card, (card) => card.comments, { onDelete: 'CASCADE' })
   public card: Card;
 }
