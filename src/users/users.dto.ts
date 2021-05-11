@@ -5,7 +5,7 @@ export class CreateUserDto {
   @ApiProperty()
   @IsString()
   @IsDefined()
-  username: string;
+  name: string;
 
   @ApiProperty()
   @IsString()
@@ -22,7 +22,7 @@ export class UpdateUserDto {
   @ApiProperty()
   @IsString()
   @IsDefined()
-  username?: string;
+  name?: string;
 
   @ApiProperty()
   @IsString()
