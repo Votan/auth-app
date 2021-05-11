@@ -4,8 +4,8 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
-  Put,
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -39,7 +39,7 @@ export class CardsController {
     return this.cardsService.findOne(id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @UseGuards(CardsOwnerGuard)
   update(@Param('id') id: string, @Body() updateCardDto: UpdateCardDto) {
     return this.cardsService.update(id, updateCardDto);

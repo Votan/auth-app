@@ -4,8 +4,8 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
-  Put,
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -42,7 +42,7 @@ export class CommentsController {
     return this.commentsService.findOne(id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @UseGuards(CommentsOwnerGuard)
   update(@Param('id') id: string, @Body() updateCommentDto: UpdateCommentDto) {
     return this.commentsService.update(id, updateCommentDto);

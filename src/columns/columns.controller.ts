@@ -4,8 +4,8 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
-  Put,
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -39,7 +39,7 @@ export class ColumnsController {
     return this.columnsService.findOne(id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @UseGuards(ColumnsOwnerGuard)
   update(@Param('id') id: string, @Body() updateColumnDto: UpdateColumnDto) {
     return this.columnsService.update(id, updateColumnDto);
