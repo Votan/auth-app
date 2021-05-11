@@ -21,16 +21,13 @@ export class CreateUserDto {
 export class UpdateUserDto {
   @ApiProperty()
   @IsString()
-  @IsDefined()
   name?: string;
 
   @ApiProperty()
   @IsString()
-  @IsDefined()
   password?: string;
 
   @ApiProperty()
   @IsEmail()
-  @IsDefined()
   email?: string;
 }

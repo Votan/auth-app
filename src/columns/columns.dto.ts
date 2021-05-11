@@ -11,6 +11,5 @@ export class CreateColumnDto {
 export class UpdateColumnDto {
   @ApiProperty()
   @IsString()
-  @IsDefined()
   name?: string;
 }
