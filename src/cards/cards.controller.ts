@@ -29,6 +29,7 @@ export class CardsController {
   }
 
   @Get()
+  @UseGuards(CardsOwnerGuard)
   findAll() {
     return this.cardsService.findAll();
   }

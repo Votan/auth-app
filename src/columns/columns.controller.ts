@@ -29,6 +29,7 @@ export class ColumnsController {
   }
 
   @Get()
+  @UseGuards(ColumnsOwnerGuard)
   findAll() {
     return this.columnsService.findAll();
   }

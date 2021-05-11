@@ -32,6 +32,7 @@ export class CommentsController {
   }
 
   @Get()
+  @UseGuards(CommentsOwnerGuard)
   findAll() {
     return this.commentsService.findAll();
   }
