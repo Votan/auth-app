@@ -23,19 +23,16 @@ export class Card {
 
   @Column({
     type: 'varchar',
-    nullable: false,
   })
-  title: string;
+  name: string;
 
   @Column({
     type: 'varchar',
-    nullable: false,
   })
   description: string;
 
   @Column({
     type: 'varchar',
-    nullable: false,
   })
   position: string;
 

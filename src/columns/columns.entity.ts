@@ -23,9 +23,8 @@ export class Columns {
 
   @Column({
     type: 'varchar',
-    nullable: false,
   })
-  title: string;
+  name: string;
 
   @CreateDateColumn()
   createDate: string;

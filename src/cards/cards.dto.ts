@@ -5,7 +5,7 @@ export class CreateCardDto {
   @ApiProperty()
   @IsString()
   @IsDefined()
-  title: string;
+  name: string;
 
   @ApiProperty()
   @IsString()
@@ -21,16 +21,13 @@ export class CreateCardDto {
 export class UpdateCardDto {
   @ApiProperty()
   @IsString()
-  @IsDefined()
-  title?: string;
+  name?: string;
 
   @ApiProperty()
   @IsString()
-  @IsDefined()
-  description: string;
+  description?: string;
 
   @ApiProperty()
   @IsString()
-  @IsDefined()
-  position: string;
+  position?: string;
 }
