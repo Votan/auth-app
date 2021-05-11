@@ -16,11 +16,13 @@ export class Columns {
   id: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
   })
   authorId: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
   })
   name: string;

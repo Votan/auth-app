@@ -16,21 +16,25 @@ export class Card {
   id: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
   })
   authorId: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
   })
   name: string;
 
   @Column({
+    length: 255,
     type: 'varchar',
   })
   description: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
   })
   position: string;

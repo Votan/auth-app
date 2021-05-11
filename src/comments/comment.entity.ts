@@ -14,11 +14,13 @@ export class Comments {
   id: string;
 
   @Column({
+    length: 100,
     type: 'text',
   })
   authorId: string;
 
   @Column({
+    length: 255,
     type: 'text',
   })
   body: string;
