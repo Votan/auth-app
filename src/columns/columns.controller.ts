@@ -41,8 +41,8 @@ export class ColumnsController {
 
   @Put(':id')
   @UseGuards(ColumnsOwnerGuard)
-  update(@Param('id') id: string, @Body() updateColumDto: UpdateColumnDto) {
-    return this.columnsService.update(id, updateColumDto);
+  update(@Param('id') id: string, @Body() updateColumnDto: UpdateColumnDto) {
+    return this.columnsService.update(id, updateColumnDto);
   }
 
   @Delete(':id')
