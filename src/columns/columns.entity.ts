@@ -17,7 +17,6 @@ export class Columns {
 
   @Column({
     type: 'varchar',
-    nullable: false,
   })
   authorId: string;
 

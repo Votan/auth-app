@@ -20,7 +20,6 @@ export class Comments {
 
   @Column({
     type: 'text',
-    nullable: true,
   })
   body: string;
 

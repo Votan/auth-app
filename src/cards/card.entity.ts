@@ -17,7 +17,6 @@ export class Card {
 
   @Column({
     type: 'varchar',
-    nullable: false,
   })
   authorId: string;
 
