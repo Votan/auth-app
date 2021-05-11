@@ -19,7 +19,7 @@ import { CommentsOwnerGuard } from '../guards/comments-owner.guard';
 @ApiBearerAuth()
 @ApiTags('Comments')
 @UseGuards(JwtAuthGuard)
-@Controller('Comments')
+@Controller('comments')
 export class CommentsController {
   constructor(private readonly commentsService: CommentsService) {}
 
