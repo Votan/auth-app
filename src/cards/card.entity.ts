@@ -39,9 +39,13 @@ export class Card {
   @UpdateDateColumn()
   updateDate: string;
 
-  @ManyToOne(() => Columns, (columns) => columns.cards, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Columns, (columns) => columns.cards, {
+    onDelete: 'CASCADE',
+  })
   columns: Columns;
 
-  @OneToMany(() => Comments, (comments) => comments.card)
+  @OneToMany(() => Comments, (comments) => comments.card, {
+    onDelete: 'CASCADE',
+  })
   comments: Comments[];
 }

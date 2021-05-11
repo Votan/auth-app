@@ -24,6 +24,8 @@ export class User {
   })
   email: string;
 
-  @OneToMany((type) => Columns, (columns) => columns.user)
+  @OneToMany(() => Columns, (columns) => columns.user, {
+    onDelete: 'CASCADE',
+  })
   columns: Columns[];
 }
