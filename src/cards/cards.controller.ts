@@ -18,7 +18,7 @@ import { CardsOwnerGuard } from '../guards/cards-owner.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
-@ApiTags('cards')
+@ApiTags('Cards')
 @Controller('cards')
 export class CardsController {
   constructor(private readonly cardsService: CardsService) {}

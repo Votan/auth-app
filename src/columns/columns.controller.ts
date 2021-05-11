@@ -18,7 +18,7 @@ import { ColumnsOwnerGuard } from '../guards/columns-owner.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
-@ApiTags('columns')
+@ApiTags('Columns')
 @Controller('columns')
 export class ColumnsController {
   constructor(private readonly columnsService: ColumnsService) {}
