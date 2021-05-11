@@ -14,6 +14,7 @@ import { ColumnsService } from './columns.service';
 import { CreateColumnDto, UpdateColumnDto } from './columns.dto';
 import { CurrentUser } from '../guards/current-user.decorator';
 import { User } from '../users/user.entity';
+import { ColumnsOwnerGuard } from '../guards/columns-owner.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
@@ -33,16 +34,19 @@ export class ColumnsController {
   }
 
   @Get(':id')
+  @UseGuards(ColumnsOwnerGuard)
   findOne(@Param('id') id: string) {
     return this.columnsService.findOne(id);
   }
 
   @Put(':id')
+  @UseGuards(ColumnsOwnerGuard)
   update(@Param('id') id: string, @Body() updateColumDto: UpdateColumnDto) {
     return this.columnsService.update(id, updateColumDto);
   }
 
   @Delete(':id')
+  @UseGuards(ColumnsOwnerGuard)
   delete(@Param('id') id: string) {
     return this.columnsService.delete(id);
   }
