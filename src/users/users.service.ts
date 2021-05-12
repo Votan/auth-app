@@ -32,11 +32,23 @@ export class UsersService {
     return this.columnsService.findAllByUserId(id);
   }
 
+  findUserColumn(id: string) {
+    return this.columnsService.findOne(id);
+  }
+
   update(id: string, entity: Partial<User>) {
     return this.usersRepository.update(id, entity);
   }
 
+  updateUserColumn(id: string, entity: Partial<User>) {
+    return this.columnsService.update(id, entity);
+  }
+
   async delete(id: string): Promise<void> {
     await this.usersRepository.delete(id);
+  }
+
+  deleteUserColumn(id: string) {
+    return this.columnsService.delete(id);
   }
 }

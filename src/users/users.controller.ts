@@ -32,8 +32,13 @@ export class UsersController {
   }
 
   @Get(':id/columns')
-  findUserColumns(@Param('id') id: string) {
+  findAllUserColumns(@Param('id') id: string) {
     return this.usersService.findAllUserColumns(id);
+  }
+
+  @Get(':id/columns/:id')
+  findUserColumn(@Param('id') id: string) {
+    return this.usersService.findUserColumn(id);
   }
 
   @UseGuards(JwtAuthGuard)
@@ -48,9 +53,22 @@ export class UsersController {
     return this.usersService.update(id, updateUserDto);
   }
 
+  @Patch(':userId/columns/:columnId')
+  updateUserColumn(
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    return this.usersService.updateUserColumn(id, updateUserDto);
+  }
+
   @UseGuards(JwtAuthGuard, AccountOwnerGuard)
   @Delete(':id')
   delete(@Param('id') id: string) {
     return this.usersService.delete(id);
+  }
+
+  @Delete(':userId/columns/:columnId')
+  deleteUserColumn(@Param('columnId') id: string) {
+    return this.usersService.deleteUserColumn(id);
   }
 }
