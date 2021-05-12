@@ -19,7 +19,7 @@ export class Columns {
     length: 100,
     type: 'varchar',
   })
-  authorId: string;
+  authorId: User['id'];
 
   @Column({
     length: 100,

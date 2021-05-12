@@ -31,6 +31,11 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get(':id/columns')
+  findUserColumns(@Param('id') id: string) {
+    return this.usersService.findAllUserColumns(id);
+  }
+
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
