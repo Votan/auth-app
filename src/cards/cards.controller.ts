@@ -4,8 +4,8 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
-  Put,
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -18,7 +18,7 @@ import { CardsOwnerGuard } from '../guards/cards-owner.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
-@ApiTags('cards')
+@ApiTags('Cards')
 @Controller('cards')
 export class CardsController {
   constructor(private readonly cardsService: CardsService) {}
@@ -29,6 +29,7 @@ export class CardsController {
   }
 
   @Get()
+  @UseGuards(CardsOwnerGuard)
   findAll() {
     return this.cardsService.findAll();
   }
@@ -39,7 +40,7 @@ export class CardsController {
     return this.cardsService.findOne(id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @UseGuards(CardsOwnerGuard)
   update(@Param('id') id: string, @Body() updateCardDto: UpdateCardDto) {
     return this.cardsService.update(id, updateCardDto);

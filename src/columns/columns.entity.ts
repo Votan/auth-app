@@ -16,16 +16,16 @@ export class Columns {
   id: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
-    nullable: false,
   })
-  authorId: string;
+  authorId: User['id'];
 
   @Column({
+    length: 100,
     type: 'varchar',
-    nullable: false,
   })
-  title: string;
+  name: string;
 
   @CreateDateColumn()
   createDate: string;

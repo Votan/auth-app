@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { Columns } from '../columns/columns.entity';
 import { Comments } from '../comments/comment.entity';
+import { User } from '../users/user.entity';
 
 @Entity()
 export class Card {
@@ -16,26 +17,26 @@ export class Card {
   id: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
-    nullable: false,
   })
-  authorId: string;
+  authorId: User['id'];
 
   @Column({
+    length: 100,
     type: 'varchar',
-    nullable: false,
   })
-  title: string;
+  name: string;
 
   @Column({
+    length: 255,
     type: 'varchar',
-    nullable: false,
   })
   description: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
-    nullable: false,
   })
   position: string;
 

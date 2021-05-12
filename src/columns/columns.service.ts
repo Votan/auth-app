@@ -19,6 +19,10 @@ export class ColumnsService {
     return this.columnsRepository.find();
   }
 
+  findAllByUserId(id: string): Promise<Columns[]> {
+    return this.columnsRepository.find({ authorId: id });
+  }
+
   findOne(id: string): Promise<Columns> {
     return this.columnsRepository.findOne(id);
   }

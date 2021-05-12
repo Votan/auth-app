@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Card } from '../cards/card.entity';
+import { User } from '../users/user.entity';
 
 @Entity()
 export class Comments {
@@ -16,11 +17,10 @@ export class Comments {
   @Column({
     type: 'text',
   })
-  authorId: string;
+  authorId: User['id'];
 
   @Column({
     type: 'text',
-    nullable: true,
   })
   body: string;
 

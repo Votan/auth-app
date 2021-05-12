@@ -3,12 +3,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DeepPartial, Repository } from 'typeorm';
 import { User } from './user.entity';
 import * as bcrypt from 'bcrypt';
+import { ColumnsService } from '../columns/columns.service';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private usersRepository: Repository<User>,
+    private columnsService: ColumnsService,
   ) {}
 
   async create(entity: DeepPartial<User>) {
@@ -26,11 +28,27 @@ export class UsersService {
     return this.usersRepository.findOne({ email: email });
   }
 
+  findAllUserColumns(id: string) {
+    return this.columnsService.findAllByUserId(id);
+  }
+
+  findUserColumn(id: string) {
+    return this.columnsService.findOne(id);
+  }
+
   update(id: string, entity: Partial<User>) {
     return this.usersRepository.update(id, entity);
   }
 
+  updateUserColumn(id: string, entity: Partial<User>) {
+    return this.columnsService.update(id, entity);
+  }
+
   async delete(id: string): Promise<void> {
     await this.usersRepository.delete(id);
+  }
+
+  deleteUserColumn(id: string) {
+    return this.columnsService.delete(id);
   }
 }

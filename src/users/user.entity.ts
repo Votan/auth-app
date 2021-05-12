@@ -7,20 +7,20 @@ export class User {
   id: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
-    nullable: false,
   })
-  username: string;
+  name: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
-    nullable: false,
   })
   password: string;
 
   @Column({
+    length: 100,
     type: 'varchar',
-    nullable: false,
   })
   email: string;
 
